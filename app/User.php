@@ -30,19 +30,18 @@ class User extends Authenticatable
 
     /**
      * The attributes that should be cast to native types.
-     *
      * @var array
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-    
-    
-    
+
+
+
     public function devices()
     {
         return $this->hasMany('App\Device');
     }
-    
-    
+
+
 }
