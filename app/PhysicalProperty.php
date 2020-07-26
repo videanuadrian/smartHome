@@ -6,13 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class PhysicalProperty extends Model
 {
-    
-    
-    public function devices(){
+
+    public function devicesRelation(){
         return $this->belongsToMany('App\Device');
     }
-    
-    public function measurementLog(){
-        return $this->belongsTo('App\MeasurementLog');
+
+    public function measurementLogRelation(){
+        return $this->hasMany('App\MeasurementLog');
     }
 }

@@ -7,16 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 class MeasurementLog extends Model
 {
 
-    protected $fillable = [
-        'device_id', 'physical_property_id', 'value',
-    ];
-
-    public function device(){
-        return $this->hasOne('App\Device');
+    public function deviceRelation(){
+        return $this->belongsTo('App\Device','device_id','id');
     }
 
-    public function physicalProperty(){
-        return $this->hasOne('App\PhysicalProperty');
+    public function physicalPropertyRelation(){
+        return $this->belongsTo('App\PhysicalProperty','physical_property_id','id');
     }
 
 }
