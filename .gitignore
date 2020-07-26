@@ -13,3 +13,4 @@ yarn-error.log
 .buildpath
 .editorconfig
 .env.example
+.env_prod
