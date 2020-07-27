@@ -44,11 +44,11 @@ class MonitorController extends Controller
      */
     public function store(Request $request)
     {
-        $deviceId = $request->get('device_id');
-        $temp = $request->get('temp');
-        $hum = $request->get('hum');
-        $lum = $request->get('lum');
-        $apiKey = $request->get('api_key');
+        $deviceId = $request->input('device_id');
+        $temp = $request->input('temp');
+        $hum = $request->input('hum');
+        $lum = $request->input('lum');
+        $apiKey = $request->input('api_key');
 
         if ($apiKey != "MrdP5RXhlA"){
             return response()->json(['response'=>'forbidden'], 403);
