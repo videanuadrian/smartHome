@@ -20,10 +20,10 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
-    
 
 
-<script> fetch('api/v1/cars') .then(function(response) {response.json().then(function(data) {var str=JSON.stringify(data.cars); document.getElementById('response').innerHTML=str;});}) .catch(function(err) {console.log('Error: ' + err);});</script>
+
+<!-- <script> fetch('api/v1/cars') .then(function(response) {response.json().then(function(data) {var str=JSON.stringify(data.cars); document.getElementById('response').innerHTML=str;});}) .catch(function(err) {console.log('Error: ' + err);});</script> -->
 
 
 </body>

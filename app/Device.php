@@ -7,16 +7,15 @@ use Illuminate\Database\Eloquent\Model;
 class Device extends Model
 {
 
-    public function user(){
-        return $this->belongsTo('App\User');
+    public function userRelation(){
+        return $this->belongsTo('App\User','user_id','id');
     }
 
-
-    public function physicalProperties(){
+    public function physicalPropertiesRelation(){
         return $this->belongsToMany('App\PhysicalProperty');
     }
 
-    public function measurementLogs(){
-        return $this->belongsTo('App\MeasurementLog');
+    public function measurementLogsRelation(){
+        return $this->hasMany('App\MeasurementLog','device_id','id');
     }
 }
