@@ -33,7 +33,13 @@ class MonitorController extends Controller
      */
     public function index()
     {
-        //
+        $logs = $this->measurementLogModel->all()->where('created_at', '>=', date('Y-m-d')." 00:00:00")->sortByDesc('created_at');
+        $logs->loadMissing('deviceRelation');
+        $logs->loadMissing('physicalPropertyRelation');
+
+  
+         return view('readings.reading')->with('logs', $logs);
+         
     }
 
     /**
