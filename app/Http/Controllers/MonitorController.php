@@ -20,6 +20,7 @@ class MonitorController extends Controller
 
     public function __construct(Device $deviceModel,User $userModel,PhysicalProperty $physicalPropertyModel,MeasurementLog $measurementLogModel)
     {
+        $this->middleware('auth');
         $this->userModel = $userModel;
         $this->deviceModel = $deviceModel;
         $this->physicalPropertyModel = $physicalPropertyModel;
@@ -37,9 +38,7 @@ class MonitorController extends Controller
         $logs->loadMissing('deviceRelation');
         $logs->loadMissing('physicalPropertyRelation');
 
-  
          return view('readings.reading')->with('logs', $logs);
-         
     }
 
     /**
