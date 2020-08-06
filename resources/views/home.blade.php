@@ -14,7 +14,8 @@
                         </div>
                     @endif
 
-                    {{ __('You are logged in!') }}
+                    <a href="/readings" class="btn btn-primary btn-sm"> Today Readings</a>
+                     
                 </div>
             </div>
         </div>
