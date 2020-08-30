@@ -14,7 +14,37 @@
                         </div>
                     @endif
 
-                    <a href="/readings" class="btn btn-primary btn-sm"> Today Readings</a>
+                    
+                    
+                    @foreach ($devices as $device)
+                    
+                    <a href="{{route('reading' ,['did'=>$device->id])}}" class="btn btn-primary btn-sm"> Today Readings </a><br>
+                    
+                    <table>
+                        <tr>
+                           <td>DeviceName: </td>     
+                            <td>{{$device->name}}</td>
+                        </tr>
+                        <tr>
+                            <td>Location: </td>
+                            <td>{{$device->location}}</td>
+                        </tr>
+                        <tr>
+                            <td>Measures: </td>
+                             <td>
+                                    @foreach ($device->physicalPropertiesRelation as $phProp) 
+                                        {{$phProp->name}} /
+                                    @endforeach
+                             </td> 
+                        </tr>
+                        <tr>
+                            <td>Owner: </td>
+                            <td>{{$device->userRelation->name}}</td>
+                        </tr>
+                    </table>
+                    
+
+                    @endforeach
                      
                 </div>
             </div>

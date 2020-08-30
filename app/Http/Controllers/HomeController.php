@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Device;
+use App\PhysicalProperty;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -23,6 +26,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $sessionId = Auth::id();
+        $devices = Device::where('user_id', '=', $sessionId)->get();
+        
+        return view('home', ['devices'=>$devices]);
     }
 }

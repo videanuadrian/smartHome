@@ -9,6 +9,7 @@ class Device extends Model
 
     public function userRelation(){
         return $this->belongsTo('App\User','user_id','id');
+        // return $this->belongsTo(User::class);
     }
 
     public function physicalPropertiesRelation(){
