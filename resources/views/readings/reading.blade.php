@@ -16,10 +16,10 @@
                @foreach ($logs as $log)
                   <tr>            
                         <td>{{ $log->id }}</td> 
-                        <td> {{$log->deviceRelation->name}} </td> 
+                        <td> {{$log->deviceRelation->name}} </td>
                         <td> {{$log->deviceRelation->location}} </td> 
                         <td> {{$log->physicalPropertyRelation->name}} </td>
-                        <td> {{ $log->value }} </td> 
+                        <td> {{$log->value}} </td> 
                         <td> {{$log->created_at}} </td>
                   </tr>
                @endforeach

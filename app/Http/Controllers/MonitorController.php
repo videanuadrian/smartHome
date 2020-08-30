@@ -3,11 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
 
 use App\Device;
 use App\User;
 use App\MeasurementLog;
 use App\PhysicalProperty;
+use Session;
+use Input;
 
 
 class MonitorController extends Controller
@@ -32,13 +36,22 @@ class MonitorController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $logs = $this->measurementLogModel->all()->where('created_at', '>=', date('Y-m-d')." 00:00:00")->sortByDesc('created_at');
+
+        // TODO -- verifica aici ca id-ul primit este al userului logat !!!! altfel o sa poata accesa device-urile altora
+        // select from devices where id= 'asta primit' si user.id= 'id user logat'
+        // daca nu intoarce nimic e nasol, daca intoarce 2 iar e nasol, tre sa intoarca 1 sg element
+
+        $did = $request->input('did');
+         
+        $logs = $this->measurementLogModel->all()->where('created_at', '>=', date('Y-m-d')." 00:00:00")
+                                                 ->where('device_id', '=', $did)
+                                                 ->sortByDesc('created_at');
         $logs->loadMissing('deviceRelation');
         $logs->loadMissing('physicalPropertyRelation');
-
-         return view('readings.reading')->with('logs', $logs);
+         
+        return view('readings.reading')->with('logs', $logs);
     }
 
     /**

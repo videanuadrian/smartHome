@@ -20,4 +20,10 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/readings', 'MonitorController@index')->name('reading');
+
+Route::middleware('auth')->group(function(){
+    
+    Route::get('/readings', 'MonitorController@index')->name('reading');
+});
+
+Route::get('/user', 'UserController@show')->name('user');
